@@ -152,7 +152,8 @@ std::cin >> name >> age;
 std::string name;
 char dob[11];
 
-std::getline(std::cin, name);
+std::getline(std::cin >> std::ws, name);
+std::cin >> std::ws;
 std::cin.getline(dob, 11);
 ```
 - Input/Output manipulation: https://en.cppreference.com/w/cpp/io/manip
