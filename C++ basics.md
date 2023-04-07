@@ -33,7 +33,7 @@
 ```cpp
 #include <iostream>
 
-int main(){
+int main() {
     std::cout << "Hello World!" << std::endl;
     return 0;
 }
@@ -52,7 +52,7 @@ int main(){
 #include <iostream>
 
 // entry point of the program
-int main(){
+int main() {
     /*
         Function to print "Hello World!"
     */
@@ -69,7 +69,7 @@ int main(){
 - The function definition defines the parameter names and statements. The function declaration can be inferred from the function defintion.
 - Syntax of function definition
 ```cpp
-return_type functionName(type parameter_1, type parameter_2, ..., type parameter_N){
+return_type functionName(type parameter_1, type parameter_2, ..., type parameter_N) {
     // statements
     return;
 }
@@ -81,15 +81,15 @@ functionName(input_1, input_2, ..., input_N);
 - Function declaration and definition can be written separately. In this case, the declaration is refered to as a function prototype. The function can also be called before it has been defined if it has been prototyped.
 - Example
 ```cpp
-void hello(std::string); // declaration or function prototype
+void hello(std::string);  // declaration or function prototype
 
 int main() {
-    hello("human"); // call/invocation
+    hello("human");  // call/invocation
     return 0;
 }
 
 // definition
-void hello(std::string name){
+void hello(std::string name) {
     std::cout << "hello " << name;
 }
 ```
@@ -127,7 +127,7 @@ void divide(double dividend, double divisor) {
 #include <iostream>
 #include <string>
 
-int main(){
+int main() {
     std::string name;
     int age;
 
@@ -162,9 +162,9 @@ std::cin.getline(dob, 11);
 - We can represent numbers using different number systems.
 - Example of storing 17<sub>10</sub> using diffrent number systems:
 ```cpp
-    int binary_num = 0b10001;
-    int octal_num = 021;
-    int hexadecimal_num = 0x11;
+int binary_num = 0b10001;
+int octal_num = 021;
+int hexadecimal_num = 0x11;
 ```
 
 ## Variables
@@ -238,13 +238,13 @@ std::cin.getline(dob, 11);
     ```
     2. zero divided by zero
     ```cpp
-    std::cout << 0.0/0.0 << std::endl; // NaN (Not a Number)
+    std::cout << 0.0 / 0.0 << std::endl;  // NaN (Not a Number)
     ```
 - C++ assumes that all decimal numbers are of type `double`. To ensure proper interpretation of decimal numbers we need to utilize suffixes. Use the `f` suffix for `float` and the `L` suffix for `long double`.
 ```cpp
-float float_pi {3.141592653589793238462643383279f};
-double double_pi {3.141592653589793238462643383279};
-long double long_double_pi {3.141592653589793238462643383279L};
+float float_pi{3.141592653589793238462643383279f};
+double double_pi{3.141592653589793238462643383279};
+long double long_double_pi{3.141592653589793238462643383279L};
 ```
 
 #### Scientific Notation
@@ -254,8 +254,8 @@ long double long_double_pi {3.141592653589793238462643383279L};
     2. 0.000001678268 can be written as 1.678268 * 10<sup>-6</sup>
 - Syntax of scientific notation
 ```cpp
-double number1 {1.23456e8};
-double number2 {1.67826e-6};
+double number1{1.23456e8};
+double number2{1.67826e-6};
 ```
 
 ### `bool`
@@ -263,15 +263,15 @@ double number2 {1.67826e-6};
 - The size of `bool` is 1 byte.
 - Example:
 ```cpp
-bool bool_var_1 {true};
-bool bool_var_2 {false};
+bool bool_var_1{true};
+bool bool_var_2{false};
 
-std::cout << bool_var_1 << std::endl; // 1
-std::cout << bool_var_2 << std::endl; // 0
+std::cout << bool_var_1 << std::endl;  // 1
+std::cout << bool_var_2 << std::endl;  // 0
 
 std::cout << std::boolalpha;
-std::cout << bool_var_1 << std::endl; // true
-std::cout << bool_var_2 << std::endl; // false
+std::cout << bool_var_1 << std::endl;  // true
+std::cout << bool_var_2 << std::endl;  // false
 ```
 
 ### `char`
@@ -281,40 +281,40 @@ std::cout << bool_var_2 << std::endl; // false
 - Character should be enclosed in single-quotes (`'`).
 - Example:
 ```cpp
-char char_var_1 {'a'};
-char char_var_2 {65};
+char char_var_1{'a'};
+char char_var_2{65};
 
-std::cout << char_var_1 << std::endl; // a
-std::cout << char_var_2 << std::endl; // A
+std::cout << char_var_1 << std::endl;  // a
+std::cout << char_var_2 << std::endl;  // A
 
-std::cout << int(char_var_1) << std::endl; // 97
-std::cout << static_cast<int>(char_var_2) << std::endl; // 65
+std::cout << int(char_var_1) << std::endl;               // 97
+std::cout << static_cast<int>(char_var_2) << std::endl;  // 65
 ```
 
 ### `auto`
 - The auto datatype allows the compiler to automatically deduce the datatype of the variable.
 - Example:
 ```cpp
-auto int_var {123};
-auto float_var {1.56f};
-auto double_var {1.8892};
-auto long_double_var {1.9928L};
-auto char_var {'a'};
+auto int_var{123};
+auto float_var{1.56f};
+auto double_var{1.8892};
+auto long_double_var{1.9928L};
+auto char_var{'a'};
 
-auto unsigned_int_var {123u};
-auto long_int_var {123l};
+auto unsigned_int_var{123u};
+auto long_int_var{123l};
 ```
 
 ## Operators
 
 ### Arithmetic Operators
 ```cpp
-std::cout << 4 + 6 << std::endl;    // 10
-std::cout << 5 - 2 << std::endl;    // 3
-std::cout << 3 * 4 << std::endl;    // 12
-std::cout << 15 / 2 << std::endl;   // 7
-std::cout << 15 / 2.0 << std::endl; // 7.5
-std::cout << 15 % 2 << std::endl;   // 1
+std::cout << 4 + 6 << std::endl;     // 10
+std::cout << 5 - 2 << std::endl;     // 3
+std::cout << 3 * 4 << std::endl;     // 12
+std::cout << 15 / 2 << std::endl;    // 7
+std::cout << 15 / 2.0 << std::endl;  // 7.5
+std::cout << 15 % 2 << std::endl;    // 1
 ```
 - Operators work with integers and floating point types. Except for modulus operator (`%`) which only works with integers.
 
@@ -334,40 +334,40 @@ std::cout << 15 % 2 << std::endl;   // 1
 - Postfix/Suffix increment/decrement operators change the value after the statement is executed.
 - Example:
 ```cpp
-int var_a {12};
-float var_b {3.14f};
+int var_a{12};
+float var_b{3.14f};
 
 // Prefix
-std::cout << var_a++ << std::endl; // 12
-std::cout << var_a << std::endl;   // 13
-std::cout << var_b-- << std::endl; // 3.14
-std::cout << var_b << std::endl;   // 2.14
+std::cout << var_a++ << std::endl;  // 12
+std::cout << var_a << std::endl;    // 13
+std::cout << var_b-- << std::endl;  // 3.14
+std::cout << var_b << std::endl;    // 2.14
 
 // Postfix/Suffix
-std::cout << ++var_a << std::endl; // 14
-std::cout << --var_b << std::endl; // 1.14
+std::cout << ++var_a << std::endl;  // 14
+std::cout << --var_b << std::endl;  // 1.14
 ```
 
 ### Compound Assignment Operators
 - These are modified assignment operators which perform an operation prior to assignment.
 - Example:
 ```cpp
-int var {10};
+int var{10};
 
-var += 3; // var = var + 3
-std::cout << var << std::endl; // 13
+var += 3;                       // var = var + 3
+std::cout << var << std::endl;  // 13
 
-var -= 1; // var = var - 1
-std::cout << var << std::endl; // 12
+var -= 1;                       // var = var - 1
+std::cout << var << std::endl;  // 12
 
-var *= 3; // var = var * 3
-std::cout << var << std::endl; // 36
+var *= 3;                       // var = var * 3
+std::cout << var << std::endl;  // 36
 
-var /= 6; // var = var / 6
-std::cout << var << std::endl; // 6
+var /= 6;                       // var = var / 6
+std::cout << var << std::endl;  // 6
 
-var %= 4; // var = var % 4
-std::cout << var << std::endl; // 2
+var %= 4;                       // var = var % 4
+std::cout << var << std::endl;  // 2
 ```
 
 ### Relational Operators
@@ -398,12 +398,9 @@ std::cout << var << std::endl; // 2
 1. `if`-`else`
 - Syntax:
 ```cpp
-if (condition)
-{
+if (condition) {
     // true block
-}
-else
-{
+} else {
     // false block
 }
 ```
@@ -411,15 +408,11 @@ else
 2. `if`-`else if`
 - Syntax:
 ```cpp
-if (condition1)
-{
+if (condition1) {
     // block 1
-}
-else if (condition2)
-{
+} else if (condition2) {
     // block 2
-}
-else // optional
+} else  // optional
 {
     // default block
 }
@@ -428,16 +421,15 @@ else // optional
 3. `switch`
 - Syntax:
 ```cpp
-switch (variable)
-{
+switch (variable) {
     case value1:
         // block 1
         break;
     case value2:
         // block2
         break;
-    default: // optional
-        //default block
+    default:
+        // optional default block
 }
 ```
 - `switch` executes statements of all cases once any one `case` is `true`. The, `break` statement is used to prevent this and execute statements of only the `case` that is `true`.
@@ -449,8 +441,7 @@ switch (variable)
 - It is an entry-controlled loop.
 - Syntax:
 ```cpp
-for (initialization; condition; update)
-{
+for (initialization; condition; update) {
     // statements
 }
 ```
@@ -466,8 +457,7 @@ for (int i = 1; i <= 5; i++)
 - Also an entry-controlled loop.
 - Syntax:
 ```cpp
-while (condition)
-{
+while (condition) {
     // statements
 }
 ```
@@ -485,8 +475,7 @@ while (i <= 5)
 - It is an exit-controlled loop. Thus, its statements are executed atleast once.
 - Syntax:
 ```cpp
-do
-{
+do {
     // statements
 } while (condition);
 ```
@@ -504,9 +493,9 @@ do {
 - Generics can be implemented using templates.
 - Example of generic function:
 ```cpp
-template<typename T>
-void swap(T& a, T& b) // passing by reference, else variables won't be swapped in calling scope
-{
+template <typename T>
+void swap(T& a, T& b) {
+    // passing by reference, else variables won't be swapped in calling scope
     T temp = a;
     a = b;
     b = temp;
@@ -518,10 +507,8 @@ void swap(T& a, T& b) // passing by reference, else variables won't be swapped i
 - Recursion is when a function calls itself. Recursion can be used to repeat a block of code like loops.
 - Example of recursion:
 ```cpp
-long int factorial(int n)
-{
-    if (n == 0)
-    {
+long int factorial(int n) {
+    if (n == 0) {
         return 1;
     }
     return n * factorial(n - 1);
@@ -562,11 +549,11 @@ long int factorial(int n)
 - Array is essentially a pointer to the 0th element of the array.
 ```cpp
 int arr[5]{1, 2, 3, 4, 5};
-std::cout << arr << std::endl;     // address of 0th element
-std::cout << &arr[0] << std::endl; // address of 0th element
+std::cout << arr << std::endl;      // address of 0th element
+std::cout << &arr[0] << std::endl;  // address of 0th element
 
-std::cout << arr[3] << std::endl;     // 4
-std::cout << *(arr + 3) << std::endl; // 4
+std::cout << arr[3] << std::endl;      // 4
+std::cout << *(arr + 3) << std::endl;  // 4
 ```
 - When you pass an array to a function using pass by value only the pointer is passed.
 - Once an array is created you can't assign a value to it. You can assign values to the elements but not the array.
@@ -587,8 +574,8 @@ int *ptr = &var;
 
 std::cout << ptr << std::endl;  // address of var
 
-*ptr = 8;  // var = 8
-std::cout << var << std::endl;  // 8
+*ptr = 8;                        // var = 8
+std::cout << var << std::endl;   // 8
 std::cout << *ptr << std::endl;  // 8
 
 // address of (&) and dereferencing (*) operators cancel out
@@ -599,10 +586,8 @@ std::cout << *&var << std::endl;  // 8
 ### `void` Pointer
 - A `void` pointer can be used to store the address of a variable of any datatype. But `void` pointers can not be dereferenced directly. To dereference a `void` pointer it needs to be cast into the correct type.
 ```cpp
-void print(void *ptr, int size)
-{
-    switch (size)
-    {
+void print(void *ptr, int size) {
+    switch (size) {
         case sizeof(int):
             std::cout << *((int *)ptr) << std::endl;
             break;
@@ -612,8 +597,7 @@ void print(void *ptr, int size)
     }
 }
 
-int main()
-{
+int main() {
     int var = 12;
     char var2 = 'e';
 
