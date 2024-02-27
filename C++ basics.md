@@ -14,7 +14,7 @@
     - 10:26:25 - Bloopers
 
 ## How to run C++ code?
-- C++ code is written a a file with the `.cpp` extension.
+- C++ code is written in a file with the `.cpp` extension.
 - To run C++ code it needs to be compiled into an executable. For this there are many compilers the most popular of which is the `g++` compiler which is part of the `gcc` (GNU Compiler Collection).
 - We are using `g++-10` for practice. There is also a `clang` compiler which we'll use later on.
 
@@ -23,11 +23,11 @@
 - The latest C++ standard as of Nov 2022 is c++20 and c++23 is in progress.
 
 ## Core vs Standard Library vs STL
-- Core features/language of C++ is the basic syntax rules and data types that form the base of the entire language.
-- Standard library provides specialized features that can be included using header files.
-- These standard library features are widely used and are thus made readily available but they are not part of the core language.
-- STL is part of the standard library. It includes additional data types/containers.
-- STL also has algorithms that work with these containers.
+- The core features and language of C++ consist of the basic syntax rules and data types that form the foundation of the entire language.
+- The standard library is a part of the C++ ISO standard. It provides several generic containers, strings, streams, functions, etc.
+- Features of the standard library are defined in the `std` namespace, and the declarations are typically found in header files.
+- STL stands for the Standard Template Library. STL was developed by Alexander Stepanov prior to the standardization of C++. The standard library was created based on the concepts from the STL.
+- STL provides access to containers, iterators, and algorithms.
 
 ## Basic Structure of a C++ Program
 ```cpp
@@ -101,6 +101,7 @@ void hello(std::string name) {
 - Note that the return type is not part of the function signature for regular non-member functions.
 - Example:
 ```cpp
+// integer division
 void divide(int dividend, int divisor) {
     int remainder {dividend%divisor};
     std::cout << "quotient: " << dividend/divisor << std::endl;
@@ -109,6 +110,7 @@ void divide(int dividend, int divisor) {
     }
 }
 
+// floating point division
 void divide(double dividend, double divisor) {
     std::cout << "quotient: " << dividend/divisor << std::endl;
 }
@@ -152,9 +154,25 @@ std::cin >> name >> age;
 std::string name;
 char dob[11];
 
-std::getline(std::cin >> std::ws, name);
+std::getline(std::cin, name);
 std::cin >> std::ws;
 std::cin.getline(dob, 11);
+```
+- Another common issue that occurs when there are consecutive `cin` calls is that there is leftover data in the input buffer. Thus you have to clear the input buffer. Here is an example where clearing the input buffer might be required and how it can be done.
+```cpp
+std::string str_a, str_b, str_c;
+
+std::cin >> str_a;               // "hello world"
+std::cout << str_a << std::endl; // "hello"
+
+// without clearing input buffer
+std::cin >> str_b;
+std::cout << str_b << std::endl; // "world"
+
+// clearing input buffer
+std::cin >> std::ws;
+std::cin >> str_c;               // "hi"
+std::cout << str_c << std::endl; // "hi"
 ```
 - Input/Output manipulation: https://en.cppreference.com/w/cpp/io/manip
 
@@ -556,7 +574,7 @@ std::cout << arr[3] << std::endl;      // 4
 std::cout << *(arr + 3) << std::endl;  // 4
 ```
 - When you pass an array to a function using pass by value only the pointer is passed.
-- Once an array is created you can't assign a value to it. You can assign values to the elements but not the array.
+- Once an array is created you can't assign a value to it. You can assign values to the elements but not the entire array.
 - In C++ there is no index out of bounds checking. Thus, if you have an array of size 5 you can still access the element on index 5 like so `arr[5]`. Out of bounds index will not give an error it will just return a garbage value.
 
 ## Pointers
