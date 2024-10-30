@@ -94,6 +94,45 @@ void hello(std::string name) {
 }
 ```
 
+### Types of Function
+- Functions can be categorized based on whether they have a `return` value:
+1. `void` function
+2. `return` function
+- They can also be categorized based on whether they can be passed input parameters
+1. parameterized function
+2. non-parameterized function
+
+### Pass by Value v/s Pass by Reference
+- **Pass by value:** When you pass a variable to a function, by default, C++ makes a copy of the variable's value and passes it to the function. Thus, if the function modifies the passed variable it does not affect the original variable.
+```cpp
+void modifier_func(int num) {
+    std::cout << num << std::endl;  // 10
+    num += 5;
+    std::cout << num << std::endl;  // 15
+}
+
+int main() {
+    int num = 10;
+    modifier_func(num);
+    std::cout << num << std::endl;  // 10
+}
+```
+
+- **Pass by reference:** There are multiple ways to pass a variable by reference. Essentially, pass by reference is the opposite of pass by value, i.e., whatever modifications are made to the variable inside the function are also reflected on the original variable.
+```cpp
+void modifier_func(int &num) {
+    std::cout << num << std::endl;  // 10
+    num += 5;
+    std::cout << num << std::endl;  // 15
+}
+
+int main() {
+    int num = 10;
+    modifier_func(num);
+    std::cout << num << std::endl;  // 15
+}
+```
+
 ### Function Overloading
 - Function overloading is a feature of object-oriented programming. It enables the creation of multiple functions with the same name but with different function signatures.
 - The function signature is the parts of the function that the compiler uses for overload resolution, i.e., to figure out which function to call when multiple functions have the same name.
@@ -573,8 +612,31 @@ std::cout << &arr[0] << std::endl;  // address of 0th element
 std::cout << arr[3] << std::endl;      // 4
 std::cout << *(arr + 3) << std::endl;  // 4
 ```
-- When you pass an array to a function using pass by value only the pointer is passed.
 - Once an array is created you can't assign a value to it. You can assign values to the elements but not the entire array.
+- You can specify the size of the array when creating it, this is called a _fixed-size array_. You can also leave the size unspecified, this kind of array is called a _dynamic_ or _unsized_ array.
+```cpp
+int arr[3]{1,2,3};  // fixed-sized array
+int arr[];          // dynamic array
+```
+- There are multiple ways of passing an array to a function:
+    1. Pass it as a pointer. The pointer will point to the root of the array.
+    2. Pass it as an array. The first and second methods are identical according to C++, they are just different ways of writing the same thing.
+    3. Pass it as a reference to the array.
+```cpp
+void pass_pointer(int *arr) {arr[1] = 10;}
+void pass_array(int arr[]) {arr[2] = 20;}
+void pass_reference(int (&arr)[]) {arr[3] = 30;}
+
+int main() {
+    int arr[5] {1,2,3,4,5};
+    pass_pointer(arr);
+    std::cout << "arr[1] = " << arr[1] << std::endl;
+    pass_array(arr);
+    std::cout << "arr[2] = " << arr[2] << std::endl;
+    pass_reference(arr);
+    std::cout << "arr[3] = " << arr[3] << std::endl;
+}
+```
 - In C++ there is no index out of bounds checking. Thus, if you have an array of size 5 you can still access the element on index 5 like so `arr[5]`. Out of bounds index will not give an error it will just return a garbage value.
 
 ## Pointers
